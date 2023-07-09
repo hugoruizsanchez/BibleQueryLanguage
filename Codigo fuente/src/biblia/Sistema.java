@@ -23,11 +23,11 @@ public class Sistema {
 	 * Variables del sistema
 	 */
    	
-	public boolean ver_versiculos = true; // Ver versÌculos sÌ/no
-	public String version = "rv60.xml"; // VersiÛn de la biblia de entre las disponibles
-	public int espaciado = 0; // Espacios que tendr·n los versÌculos. Si es 0, estar·n juntos.  
+	public boolean ver_versiculos = true; // Ver vers√≠culos s√≠/no
+	public String version = "rv60.xml"; // Versi√≥n de la biblia de entre las disponibles
+	public int espaciado = 0; // Espacios que tendr√°n los vers√≠culos. Si es 0, estar√°n juntos.  
 	public int delimitador =0; // Delimitador entre palabras. 
-	public int formato =0; // Formato en que se leer·n los versÌculos: / 0. Mt 5:3-2 / 1. Mt 5.3-2 / 2. Mt 5,3-2; 
+	public int formato =0; // Formato en que se leer√°n los vers√≠culos: / 0. Mt 5:3-2 / 1. Mt 5.3-2 / 2. Mt 5,3-2; 
 
 	
 	
@@ -40,7 +40,7 @@ public class Sistema {
     }
     
     /**
-     * El mÈtodo de guardar pasajes recibir· una entrada, en base a la cual asignar· valores numÈricos a cada pasaje.
+     * El m√©todo de guardar pasajes recibir√° una entrada, en base a la cual asignar√° valores num√©ricos a cada pasaje.
      * @param entrada
      * @return
      */
@@ -48,15 +48,15 @@ public class Sistema {
     
     public ArrayList<Pasaje> guardarPasajes (String entrada) {
         
-        // CREACI”N DE OBJETOS -> utilidades, para utilizar la clase de utilidades, y un conjunto indeterminado de pasajes
+        // CREACI√ìN DE OBJETOS -> utilidades, para utilizar la clase de utilidades, y un conjunto indeterminado de pasajes
         
         ArrayList<Pasaje> listaPasajes = new ArrayList<Pasaje>();
         
-        // CONFIGURACI”N DE LA ENTRADA: 
+        // CONFIGURACI√ìN DE LA ENTRADA: 
         
         entrada = entrada.replaceAll("\\s", "");
         entrada = entrada.toUpperCase();
-        //Ajuste de mÈtodo, simplemente adaptar· la entrada a los valores originales. En la abreviatura se realizar· el proceso inverso
+        //Ajuste de m√©todo, simplemente adaptar√° la entrada a los valores originales. En la abreviatura se realizar√° el proceso inverso
         switch (formato) {
         case 0:
         break;
@@ -74,7 +74,7 @@ public class Sistema {
             entrada = entrada + ';';
         }
         
-        // SEPARACION DE LOS PASAJES: CONVERSI”N DE STRING A ARRAYLIST EN FORMA DE PASAJES SEPARADOS
+        // SEPARACION DE LOS PASAJES: CONVERSI√ìN DE STRING A ARRAYLIST EN FORMA DE PASAJES SEPARADOS
       
         //El formato 2 no es compatible con las "," como separadores.  
         String[] pasajes_separados_cast = {};
@@ -89,7 +89,7 @@ public class Sistema {
         
         ArrayList<String> pasajes_separados = new ArrayList<String>(Arrays.asList(pasajes_separados_cast));
         
-        // EXTRACCI”N DE CADA PASAJE
+        // EXTRACCI√ìN DE CADA PASAJE
           
             // VARIABLES A UTILIZAR
         
@@ -103,10 +103,10 @@ public class Sistema {
         int versiculo_final = 0;
         boolean capitulo_dos = false;
 
-        boolean compuesto = false; // VersÌculo compuesto, p.ej "Mt 5:7-12:3"
-        boolean unico = false; // Capitulo que engloba todos los versÌculos
-        boolean con_espacios = false; // VersÌculo al que le  que acompaÒa un libro con espacios p.ej "1 R 4:21". 
-        boolean uncap = false; // Si el libro pertenece a la lista de un solo capÌtulo
+        boolean compuesto = false; // Vers√≠culo compuesto, p.ej "Mt 5:7-12:3"
+        boolean unico = false; // Capitulo que engloba todos los vers√≠culos
+        boolean con_espacios = false; // Vers√≠culo al que le  que acompa√±a un libro con espacios p.ej "1 R 4:21". 
+        boolean uncap = false; // Si el libro pertenece a la lista de un solo cap√≠tulo
         String abreviatura =""; 
         ArrayList<String> nombresCompuestos = new ArrayList<String>();
         ArrayList<Integer> longitudCompuestos = new ArrayList<Integer>();
@@ -117,9 +117,9 @@ public class Sistema {
 
 
             // RECONOCIMIENTO DE LIBRO
-            // En base a libroInt se extrae el valor numÈrico de libro.
+            // En base a libroInt se extrae el valor num√©rico de libro.
             // Si la salida es error (99), es porque no se especifica, por lo que se obvia 
-            // que es un n˙mero que forma parte del mismo libro y se omite.
+            // que es un n√∫mero que forma parte del mismo libro y se omite.
            
             if (libroInt(pasajes_separados.get(i)) != 99) {
                 libro = libroInt(pasajes_separados.get(i));
@@ -173,9 +173,9 @@ public class Sistema {
             }
            
 
-            // RECONOCIMIENTO DE CAPÕTULO 
+            // RECONOCIMIENTO DE CAP√çTULO 
             // Array_capitulo es un split que quita todos los caracteres excepto los numeros, y ":", "-""
-            // Si es un capÌtulo sin versÌculos, se asume que va del 1 al limite y se aÒade la excepcion
+            // Si es un cap√≠tulo sin vers√≠culos, se asume que va del 1 al limite y se a√±ade la excepcion
             
             if (pasajes_separados.get(i).contains(":") == true) {
 
@@ -236,7 +236,7 @@ public class Sistema {
                     }
                     
     
-                   // RECONOCIMIENTO DE DOS CAPITULOS TES EL CASO MAMOOOON
+                   // RECONOCIMIENTO DE DOS CAPITULOS 
                     if (pasajes_separados.get(i).contains("-")) {
                    	    
                         
@@ -244,7 +244,7 @@ public class Sistema {
                             unico = true;
                             compuesto = true;
                             
-                            // ******  Modificar m·s adelante: que el split detecte la ˙ltima letra [A-Z] y lo haga a partir de ahÌ. 
+                            // ******  Modificar m√°s adelante: que el split detecte la √∫ltima letra [A-Z] y lo haga a partir de ah√≠. 
                             
                             int ultima_letra_int =0;
                             
@@ -373,9 +373,9 @@ public class Sistema {
                 }
             }
 
-            // RECONOCIMIENTO DE VERSÕCULOS 
+            // RECONOCIMIENTO DE VERS√çCULOS 
             
-            // Los versÌculos ˙nicos  se omiten, sus variables ya han sido introducidas anteriormente
+            // Los vers√≠culos √∫nicos  se omiten, sus variables ya han sido introducidas anteriormente
             
             if (unico == false) {
                 
@@ -385,37 +385,37 @@ public class Sistema {
 
                 versiculos = versiculos.replaceAll("\\s", "");
                 // ***********************************
-                // Si el versÌculo contiene un :, es compuesto
+                // Si el vers√≠culo contiene un :, es compuesto
                 if (versiculos.contains(":") == true) {
 
                     compuesto = true;
                     
-                    // EXTRACCI”N DE CAPÕTULO COMPUESTO
+                    // EXTRACCI√ìN DE CAP√çTULO COMPUESTO
                     int capitulo_inicial_compuesto = capitulo;
                     int capitulo_auxiliar = capitulo;
 
-                    // EXTRACCI”N DE VERSICULO FINAL E INICIAL 
+                    // EXTRACCI√ìN DE VERSICULO FINAL E INICIAL 
                     String versiculo_compuesto[] = pasajes_separados.get(i).split("-");
 
                     versiculo_compuesto[0] = versiculo_compuesto[0].replaceAll("[^0-9:]", "");
                     versiculo_compuesto[1] = versiculo_compuesto[1].replaceAll("[^0-9:]", "");
 
-                    // VERSÕCULO INICIAL COMPUESTO
+                    // VERS√çCULO INICIAL COMPUESTO
                     String[] versiculo_inicial_compuesto_string = versiculo_compuesto[0].split(":");
 
                     int versiculo_inicial_compuesto = Integer.parseInt(versiculo_inicial_compuesto_string[1]);
 
-                    // VERSÕCULO FINAL COMPUESTO
+                    // VERS√çCULO FINAL COMPUESTO
                     String[] versiculo_final_compuesto_string = versiculo_compuesto[1].split(":");
 
                     int versiculo_final_compuesto = Integer.parseInt(versiculo_final_compuesto_string[1]);
 
-                    // CAPÕTULO FINAL COMPUESTO
+                    // CAP√çTULO FINAL COMPUESTO
                     int capitulo_final_compuesto = Integer.parseInt(versiculo_final_compuesto_string[0]);
 
                     // DESARROLLO 
                    
-                        // PREVENCI”N DE ERRORES
+                        // PREVENCI√ìN DE ERRORES
                     
                     if (versiculo_inicial_compuesto <1 || versiculo_inicial_compuesto> versiculoLimite(libro, capitulo)) { // / modificado
                         versiculo_inicial_compuesto =1;
@@ -446,7 +446,7 @@ public class Sistema {
                         capitulo_auxiliar++;
                     }
                     
-                         // PREVENCI”N DE ERRORES
+                         // PREVENCI√ìN DE ERRORES
                     
                     if (versiculo_final_compuesto> versiculoLimite(libro, capitulo_auxiliar)){
                         versiculo_final_compuesto = versiculoLimite(libro, capitulo_auxiliar);
@@ -519,13 +519,13 @@ public class Sistema {
             }
           
   
-            // EXTRACCI”N DE LA ABREVIATURA UTILIZADA POR EL USUARIO // Mt 5:12-6:15
+            // EXTRACCI√ìN DE LA ABREVIATURA UTILIZADA POR EL USUARIO // Mt 5:12-6:15
             
             if (pasajes_separados.get(i).matches(".*[a-zA-Z].*")) {
             	
             	 int ultima_letra_int =0;
                  
-                 // ComprobaciÛn de la ultima letra. 
+                 // Comprobaci√≥n de la ultima letra. 
                  
                  for (int c =0; c<pasajes_separados.get(i).length(); c++) {
                  	
@@ -607,7 +607,7 @@ public class Sistema {
             
       
             
-          // RECOMPOSICI”N DE VARIABLES 
+          // RECOMPOSICI√ìN DE VARIABLES 
             
             compuesto = false;
             unico = false;
@@ -627,7 +627,7 @@ public class Sistema {
         }
         
         
-        // ExcepciÛn: asignaciÛn de abreviaturas a pasajes compuestos 
+        // Excepci√≥n: asignaci√≥n de abreviaturas a pasajes compuestos 
         
         if (abreviaturas_nulas == true) {
         
@@ -671,7 +671,7 @@ public class Sistema {
        
         
         
-        // ExcepciÛn: libro incorrecto
+        // Excepci√≥n: libro incorrecto
         
         for (int i=0; i<listaPasajes.size(); i++) {
         	if (listaPasajes.get(i).libro == 0) {
@@ -686,10 +686,10 @@ public class Sistema {
     
     
     /**
-     * Extraer el libro al que pertenece en base a un String. Sirve para traducir el string a un valor numÈrico que se consultar· en el XML.
+     * Extraer el libro al que pertenece en base a un String. Sirve para traducir el string a un valor num√©rico que se consultar√° en el XML.
      * El orden de los valores corresponde al documento XML. 
-     * Se encuentran en may˙scula a fin de que no haya errores de conversiÛn, porque todo String introducido al usuario se comparar· en may˙sculas. 
-     * Si existe un error, devuelve 99, valor que en el principal hace que se omita la funciÛn y contin˙e con el versÌculo anterior. 
+     * Se encuentran en may√∫scula a fin de que no haya errores de conversi√≥n, porque todo String introducido al usuario se comparar√° en may√∫sculas. 
+     * Si existe un error, devuelve 99, valor que en el principal hace que se omita la funci√≥n y contin√∫e con el vers√≠culo anterior. 
      * @param abreviatura
      * @return 
      */
@@ -700,10 +700,10 @@ public class Sistema {
 
         String[] abreviaturas = {"GN", "EX", "LV", "NM", "DT", "JOS", "JUE", "RT", "1 S", "2 S", "1 R", "2 R", "1 CR", "2 CR", "ESD", "NEH", "EST", "JOB", "SAL", "PR", "EC", "CNT", "IS", "JER", "LM", "EZ", "DN", "OS", "JL", "AM", "ABD", "JON", "MI", "NAH", "HAB", "SOF", "HAG", "ZAC", "MAL", "MT", "MR", "LC", "JN", "HCH", "RO", "1 CO", "2 CO", "GA", "EF", "FIL", "COL", "1 TS", "2 TS", "1 TI", "2 TI", "TIT", "FLM", "HE", "STG", "1 P", "2 P", "1 JN", "2 JN", "3 JN", "JUD", "AP"};
 
-        // COMPROBACI”N DE ERRORES. 
+        // COMPROBACI√ìN DE ERRORES. 
         
 
-        // ASIGNACI”N 
+        // ASIGNACI√ìN 
         
 
             if (abreviatura.toUpperCase().contains("GN")) {
@@ -853,8 +853,8 @@ public class Sistema {
     }
     
     /**
-     * Calcula el versÌculo lÌmite a partir de un libro y un capitulo, servir· para degranar pasajes compuestos por m·s de un capÌtulo.      * Esto lo realiza haciendo una comprobaciÛn de cuantas iteraciones realiza el contador sobre un capÌtulo que contiene los elementos hijo "verse". 
-     * Los par·metros que se introducen sustituyen los atributos de los elementos que emplearÌa la funciÛn normalmente. 
+     * Calcula el vers√≠culo l√≠mite a partir de un libro y un capitulo, servir√° para degranar pasajes compuestos por m√°s de un cap√≠tulo.      * Esto lo realiza haciendo una comprobaci√≥n de cuantas iteraciones realiza el contador sobre un cap√≠tulo que contiene los elementos hijo "verse". 
+     * Los par√°metros que se introducen sustituyen los atributos de los elementos que emplear√≠a la funci√≥n normalmente. 
      * @param libro
      * @param capitulo
      * @return 
@@ -869,20 +869,20 @@ public class Sistema {
         
         try {
 
-            // CREACI”N DE LOS OBJETOS NECESARIOS
+            // CREACI√ìN DE LOS OBJETOS NECESARIOS
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
 
-           // CONFIGURACI”N DEL NOMBRE DEL ARCHIVO
+           // CONFIGURACI√ìN DEL NOMBRE DEL ARCHIVO
             Document document = builder.parse(new File("bqlbibles/"+version));
 
             // NODELIST: Lista de nodos ("elementos"), en este caso, de los elementos "BIBLEBOOK"
-            // -> Los nodos pueden ser atributos, elementos, etc (ver condicional), necesitan ser filtrados en cada b˙squeda. 
+            // -> Los nodos pueden ser atributos, elementos, etc (ver condicional), necesitan ser filtrados en cada b√∫squeda. 
             NodeList listaLibro = document.getElementsByTagName("BIBLEBOOK");
 
             for (int i = 0; i < listaLibro.getLength(); i++) {
 
-            // Creamos un nodo que almacene todas las etiquetas <BIBLEBOOK> . Con el nodo podremos manipular la informaciÛn
+            // Creamos un nodo que almacene todas las etiquetas <BIBLEBOOK> . Con el nodo podremos manipular la informaci√≥n
                 Node nodo = listaLibro.item(i);
 
                 // Si el nodo se reconoce como un elemento...
@@ -901,7 +901,7 @@ public class Sistema {
 
                             if (hijo.getNodeType() == Node.ELEMENT_NODE) {
 
-                                // FRANJA PARA CAPÕTULO  ----------------------------- 
+                                // FRANJA PARA CAP√çTULO  ----------------------------- 
                                 
                                 
                                 Element hijoElemento = (Element) hijo;
@@ -914,7 +914,7 @@ public class Sistema {
 
                                     Node hijo2 = hijos2.item(z);
 
-                                // FRANJA PARA VERSÕCULO  ----------------------------- 
+                                // FRANJA PARA VERS√çCULO  ----------------------------- 
                                     if (hijo2.getNodeType() == Node.ELEMENT_NODE) {
                                         Element hijoElemento2 = (Element) hijo2;
 
@@ -949,9 +949,9 @@ public class Sistema {
     }
     
     /**
-     * Calcula el capÌtulo lÌmite a partir de un libro, servir· para corregir los errores del usuario al introducir capÌtulos incorrectos. 
-     * Esto lo realiza haciendo una comprobaciÛn de cuantas iteraciones realiza el contador sobre el elemento libro. 
-     * Los par·metros que se introducen sustituyen los atributos de los elementos que emplearÌa la funciÛn normalmente. 
+     * Calcula el cap√≠tulo l√≠mite a partir de un libro, servir√° para corregir los errores del usuario al introducir cap√≠tulos incorrectos. 
+     * Esto lo realiza haciendo una comprobaci√≥n de cuantas iteraciones realiza el contador sobre el elemento libro. 
+     * Los par√°metros que se introducen sustituyen los atributos de los elementos que emplear√≠a la funci√≥n normalmente. 
      * @param libro
      * @return 
      */
@@ -964,20 +964,20 @@ public class Sistema {
         
         try {
 
-            // CREACI”N DE LOS OBJETOS NECESARIOS
+            // CREACI√ìN DE LOS OBJETOS NECESARIOS
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
 
-           // CONFIGURACI”N DEL NOMBRE DEL ARCHIVO
+           // CONFIGURACI√ìN DEL NOMBRE DEL ARCHIVO
             Document document = builder.parse(new File("bqlbibles/"+version));
 
             // NODELIST: Lista de nodos ("elementos"), en este caso, de los elementos "BIBLEBOOK"
-            // -> Los nodos pueden ser atributos, elementos, etc (ver condicional), necesitan ser filtrados en cada b˙squeda. 
+            // -> Los nodos pueden ser atributos, elementos, etc (ver condicional), necesitan ser filtrados en cada b√∫squeda. 
             NodeList listaLibro = document.getElementsByTagName("BIBLEBOOK");
 
             for (int i = 0; i < listaLibro.getLength(); i++) {
 
-            // Creamos un nodo que almacene todas las etiquetas <BIBLEBOOK> . Con el nodo podremos manipular la informaciÛn
+            // Creamos un nodo que almacene todas las etiquetas <BIBLEBOOK> . Con el nodo podremos manipular la informaci√≥n
                 Node nodo = listaLibro.item(i);
 
                 // Si el nodo se reconoce como un elemento...
@@ -996,7 +996,7 @@ public class Sistema {
 
                             if (hijo.getNodeType() == Node.ELEMENT_NODE) {
 
-                                // FRANJA PARA CAPÕTULO  ----------------------------- 
+                                // FRANJA PARA CAP√çTULO  ----------------------------- 
                                 
                                 contador++;
                                 
@@ -1008,7 +1008,7 @@ public class Sistema {
 
                                     Node hijo2 = hijos2.item(z);
 
-                                // FRANJA PARA VERSÕCULO  ----------------------------- 
+                                // FRANJA PARA VERS√çCULO  ----------------------------- 
                                     if (hijo2.getNodeType() == Node.ELEMENT_NODE) {
                                         Element hijoElemento2 = (Element) hijo2;
 
@@ -1041,7 +1041,7 @@ public class Sistema {
     
     
     /**
-     * En base a un objeto Pasaje, se leen todos los versÌculos que este contiene. 
+     * En base a un objeto Pasaje, se leen todos los vers√≠culos que este contiene. 
      * @param pasaje
      * @return
      */
@@ -1049,12 +1049,12 @@ public class Sistema {
     
 	public String cuerpoPasajes(Pasaje pasaje) {
 
-		// DEFINICI”N DE VARIABLES
+		// DEFINICI√ìN DE VARIABLES
 
-		String salida = "";  // String salida: esta ser· la variable que devuelva la funciÛn, que contendr· los versÌculos
-		int versiculo = 0; // Variable interna con la que manipular la muestra de versÌculos
+		String salida = "";  // String salida: esta ser√° la variable que devuelva la funci√≥n, que contendr√° los vers√≠culos
+		int versiculo = 0; // Variable interna con la que manipular la muestra de vers√≠culos
 
-		// AN¡LISIS DEL PASAJE - øEs ˙nico?
+		// AN√ÅLISIS DEL PASAJE - ¬øEs √∫nico?
 
 		boolean unico = false; 
 
@@ -1062,9 +1062,9 @@ public class Sistema {
 			unico = true;
 		}
 
-		// IMPRESI”N DEL PASAJE
+		// IMPRESI√ìN DEL PASAJE
 
-		if (unico == true) { // Si es ˙nico, solo contendr· un versÌculo.
+		if (unico == true) { // Si es √∫nico, solo contendr√° un vers√≠culo.
 
 			if (ver_versiculos == true) {
 				System.out.print(pasaje.versiculoinicial + " ");
@@ -1078,7 +1078,7 @@ public class Sistema {
 
 			versiculo = pasaje.versiculoinicial;
 
-			for (int i = 0; i < (pasaje.versiculofinal - pasaje.versiculoinicial) + 1; i++) { //Si ver versiculos es true, de haber espaciado, para evitar la desfiguraciÛn del contenido se adaptar· con un espacio en blanco.
+			for (int i = 0; i < (pasaje.versiculofinal - pasaje.versiculoinicial) + 1; i++) { //Si ver versiculos es true, de haber espaciado, para evitar la desfiguraci√≥n del contenido se adaptar√° con un espacio en blanco.
 
 				if (ver_versiculos == true)  {
 					
@@ -1102,12 +1102,12 @@ public class Sistema {
 				}
 					
 
-				if (espaciado == 0) // Si el espaciado est· configurado en 0, se devuelve el texto en prosa, por lo que el ajuste de los versÌculos debe tener un margen
+				if (espaciado == 0) // Si el espaciado est√° configurado en 0, se devuelve el texto en prosa, por lo que el ajuste de los vers√≠culos debe tener un margen
 					salida = salida + (leerVersiculo(version, pasaje.libro, pasaje.capitulo, versiculo) + " ");
-				if (espaciado > 0) // Si es mayor que cero, no existir· margen de los versÌculos
+				if (espaciado > 0) // Si es mayor que cero, no existir√° margen de los vers√≠culos
 					salida = salida + (leerVersiculo(version, pasaje.libro, pasaje.capitulo, versiculo));
 
-				if (i != pasaje.versiculofinal - pasaje.versiculoinicial) { // Exta excepciÛn se hace para que no haya	espaciado extra. 												// espaciado extra.
+				if (i != pasaje.versiculofinal - pasaje.versiculoinicial) { // Exta excepci√≥n se hace para que no haya	espaciado extra. 												// espaciado extra.
 
 					for (int j = 0; j < espaciado; j++) {
 
@@ -1128,7 +1128,7 @@ public class Sistema {
 	}
     
     /**
-     * MÈtodo que arroja un solo versÌculo en entrada String. Se usa como funciÛn est·tica que implementa leerPasaje.
+     * M√©todo que arroja un solo vers√≠culo en entrada String. Se usa como funci√≥n est√°tica que implementa leerPasaje.
      * @param version
      * @param libro_i
      * @param capitulo_i
@@ -1136,8 +1136,8 @@ public class Sistema {
      * @return
      */
     
-    // https://chuidiang.org/index.php?title=Java_y_xpath -  SISTEMA XPATH PARA LA LECTURA DE VERSÕCULOS
-	// Permitir· la optimizaciÛn del sistema utilizando librerÌas m·s precisas. 
+    // https://chuidiang.org/index.php?title=Java_y_xpath -  SISTEMA XPATH PARA LA LECTURA DE VERS√çCULOS
+	// Permitir√° la optimizaci√≥n del sistema utilizando librer√≠as m√°s precisas. 
 	
     public static String leerVersiculo (String version, int libro_i, int capitulo_i, int versiculo_i) {
     	String salida = "";
@@ -1148,20 +1148,20 @@ public class Sistema {
     	
      	try {
 
-            // CREACI”N DE LOS OBJETOS NECESARIOS
+            // CREACI√ìN DE LOS OBJETOS NECESARIOS
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
 
-           // CONFIGURACI”N DEL NOMBRE DEL ARCHIVO
+           // CONFIGURACI√ìN DEL NOMBRE DEL ARCHIVO
             Document document = builder.parse(new File("bqlbibles/"+version));
 
             // NODELIST: Lista de nodos ("elementos"), en este caso, de los elementos "BIBLEBOOK"
-            // -> Los nodos pueden ser atributos, elementos, etc (ver condicional), necesitan ser filtrados en cada b˙squeda. 
+            // -> Los nodos pueden ser atributos, elementos, etc (ver condicional), necesitan ser filtrados en cada b√∫squeda. 
             NodeList listaLibro = document.getElementsByTagName("BIBLEBOOK");
 
             for (int i = 0; i < listaLibro.getLength(); i++) {
 
-            // Creamos un nodo que almacene todas las etiquetas <BIBLEBOOK> . Con el nodo podremos manipular la informaciÛn
+            // Creamos un nodo que almacene todas las etiquetas <BIBLEBOOK> . Con el nodo podremos manipular la informaci√≥n
                 Node nodo = listaLibro.item(i);
 
                 // Si el nodo se reconoce como un elemento...
@@ -1180,7 +1180,7 @@ public class Sistema {
 
                             if (hijo.getNodeType() == Node.ELEMENT_NODE) {
 
-                                // FRANJA PARA CAPÕTULO  ----------------------------- 
+                                // FRANJA PARA CAP√çTULO  ----------------------------- 
                                                              
                                 Element hijoElemento = (Element) hijo;
                                 
@@ -1192,7 +1192,7 @@ public class Sistema {
 
                                     Node hijo2 = hijos2.item(z);
 
-                                // FRANJA PARA VERSÕCULO  ----------------------------- 
+                                // FRANJA PARA VERS√çCULO  ----------------------------- 
                                     if (hijo2.getNodeType() == Node.ELEMENT_NODE) {
                                         Element hijoElemento2 = (Element) hijo2;
                                         
