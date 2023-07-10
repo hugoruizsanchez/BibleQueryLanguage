@@ -1,0 +1,1 @@
+java -jar BQL.jar
